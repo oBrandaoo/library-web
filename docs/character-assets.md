@@ -1,0 +1,11 @@
+# Figuras da Mooney's
+
+As figuras de Joe e Beck foram geradas para este projeto com a ferramenta integrada `image_gen`, em PNG com transparência real. São interpretações visuais originais dos personagens, sem uso de fotografias da série. Os arquivos finais estão em [`public/characters/joe.png`](../public/characters/joe.png) e [`public/characters/beck.png`](../public/characters/beck.png).
+
+## Prompt final — Joe
+
+> Use case: photorealistic-natural. Asset type: full-body transparent character cutout for a real-time 3D interactive bookstore. Primary request: Joe Goldberg, the fictional bookstore clerk from the series YOU, standing naturally behind the counter at Mooney's. Young adult man with dark wavy hair, thoughtful serious expression, pale blue button-down shirt with sleeves rolled up, worn gray work apron, dark trousers. Full body visible head to shoes, hands relaxed with one hand lightly holding a small vintage paperback. Camera at eye level, front three-quarter view turned slightly toward viewer's left. Realistic candid editorial photography, soft warm indoor bookstore light with subtle teal edge light, realistic anatomy and clothing texture. Transparent background with clean alpha edges; isolated single figure, no props outside his hand, no floor or shadow, no text, no watermark.
+
+## Prompt final — Beck
+
+> Use case: photorealistic-natural. Asset type: full-body transparent character cutout for a real-time 3D interactive bookstore. Primary request: Guinevere Beck, the fictional young writer from the series YOU, browsing a shelf in Mooney's bookstore. Young adult blonde woman, natural loose shoulder-length hair, intelligent curious expression, understated cream blouse beneath a light camel coat, dark jeans, brown ankle boots, holding a worn Paula Fox paperback loosely at her side. Full body visible head to shoes, believable relaxed standing pose, front three-quarter view turned slightly toward viewer's right. Realistic candid editorial photography, soft warm indoor bookstore light with subtle cool edge light, realistic anatomy and clothing texture. Genuinely transparent background with crisp alpha edges; isolated single figure, no shelf, no floor, no shadow, no text, no watermark.

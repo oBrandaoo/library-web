@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111914" />
+    <meta name="description" content="Explore uma recriação interativa da Mooney's, a livraria da série YOU, e descubra os livros citados na história." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400,0,0;9..144,500,0,0;9..144,600,0,0&display=swap" rel="stylesheet" />
+    <title>Mooney's — uma livraria inspirada em YOU</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="scene" aria-label="Livraria em três dimensões"></div>
+      <div class="vignette" aria-hidden="true"></div>
+
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Mooney's Rare & Used, início">
+          <span class="mooneys-brand">MOONEY'S<span>Rare & Used Books</span></span>
+        </a>
+        <div class="header-right">
+          <span class="open-sign"><span class="open-dot"></span> Uma experiência inspirada em YOU</span>
+          <button id="help-button" class="round-button" type="button" aria-label="Como explorar">?</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="welcome" class="welcome intro" aria-labelledby="welcome-title">
+          <div class="intro-grain" aria-hidden="true"></div>
+          <div class="welcome-copy intro-copy">
+            <p class="welcome-prelude">Mooney's Rare & Used Books · Nova York</p>
+            <h1 id="welcome-title">YOU<span class="intro-stop">.</span></h1>
+            <p class="intro-line">Alguns livros você escolhe.<br />Outros parecem escolher você.</p>
+            <p class="welcome-description">Entre na Mooney's, encontre Joe e Beck entre as estantes e descubra 32 obras citadas na série.</p>
+            <button id="enter-button" class="primary-button" type="button"><span>Abrir a porta da Mooney's</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <p class="fan-note">Experiência de fã não oficial, inspirada na série YOU.</p>
+          </div>
+          <div class="welcome-side" aria-hidden="true"><span>Todo livro guarda um segredo</span><span class="side-rule"></span><span>32 referências</span></div>
+        </section>
+
+        <div id="hud" class="hud" aria-hidden="true">
+          <div id="location-label" class="location-label">Mooney's · térreo</div>
+          <div class="crosshair"><span></span><span></span></div>
+          <div id="book-prompt" class="book-prompt" hidden><span class="prompt-key">E</span><span class="prompt-label">Examinar livro</span></div>
+          <div class="hud-bottom">
+            <div class="navigation-help"><span class="mini-key">W</span><span class="mini-key">A</span><span class="mini-key">S</span><span class="mini-key">D</span><span>para caminhar</span><i></i><span>Mouse para olhar</span><i></i><span>Esc para pausar</span></div>
+            <div class="hud-actions"><span id="discovery-progress">0 de 32 referências descobertas</span><button id="pause-button" class="text-button" type="button">Pausar exploração <span>↗</span></button></div>
+          </div>
+          <div class="mobile-controls" aria-label="Controles de movimento">
+            <button data-move="forward" aria-label="Avançar">↑</button>
+            <div><button data-move="left" aria-label="Ir para a esquerda">←</button><button data-move="backward" aria-label="Voltar">↓</button><button data-move="right" aria-label="Ir para a direita">→</button></div>
+          </div>
+        </div>
+
+        <div id="book-scrim" class="book-scrim" aria-hidden="true"></div>
+        <section id="book-panel" class="book-panel" role="dialog" aria-modal="true" aria-labelledby="book-title" aria-hidden="true">
+          <button id="close-book" class="panel-close" type="button" aria-label="Fechar livro">×</button>
+          <div class="book-viewer-wrap">
+            <span class="viewer-overline">Mesa de leitura</span>
+            <canvas id="book-viewer" aria-label="Modelo tridimensional do livro"></canvas>
+            <span id="cover-status" class="cover-status" role="status">Carregando capa real...</span>
+            <div class="viewer-controls"><span>Arraste para girar</span><button id="open-book" type="button" aria-pressed="false">Abrir modelo</button></div>
+          </div>
+          <div class="book-copy">
+            <div class="book-meta"><span id="book-category" class="book-category"></span><span id="book-position"></span></div>
+            <h2 id="book-title"></h2><p id="book-author" class="book-author"></p>
+            <div class="book-appearance"><span>Na série · <strong id="book-season"></strong></span><p id="book-moment"></p></div>
+            <div class="book-description-wrap"><span>Sobre a obra</span><p id="book-description" class="book-description"></p></div>
+            <p class="preview-note">A abertura mostra uma representação ilustrativa do interior. A capa é da obra catalogada na Open Library.</p>
+            <div class="book-footer"><span id="book-year"></span><a id="book-source" target="_blank" rel="noopener noreferrer">Ver na Open Library ↗</a></div>
+            <button id="next-book" class="next-book" type="button">Ver próximo livro <span>↗</span></button>
+          </div>
+        </section>
+
+        <section id="character-panel" class="character-panel" role="dialog" aria-labelledby="character-name" aria-hidden="true" inert>
+          <button id="close-character" class="character-close" type="button" aria-label="Fechar conversa">×</button>
+          <span class="character-kicker">Um encontro na Mooney's</span>
+          <h2 id="character-name"></h2>
+          <p id="character-role" class="character-role"></p>
+          <p id="character-line" class="character-line"></p>
+          <button id="character-book" class="character-book" type="button">Examinar o livro citado <span aria-hidden="true">↗</span></button>
+        </section>
+
+        <section id="help-panel" class="help-panel" aria-labelledby="help-title" aria-hidden="true">
+          <button id="close-help" class="panel-close" type="button" aria-label="Fechar ajuda">×</button>
+          <span class="help-small">Como explorar</span>
+          <h2 id="help-title">Explore a Mooney's.</h2>
+          <p>Use <strong>W A S D</strong> para caminhar e o <strong>mouse</strong> para olhar ao redor. Chegue perto de um livro, personagem ou porta e pressione <strong>E</strong> para interagir. A porta dos fundos leva ao porão e ao quarto de vidro. <strong>Esc</strong> pausa a caminhada.</p>
+          <p class="touch-help">No celular, arraste a cena para olhar, use as setas para andar e toque em livros, personagens ou portas para interagir.</p>
+          <button id="resume-button" class="primary-button" type="button"><span>Continuar explorando</span><span class="button-arrow">↗</span></button>
+        </section>
+      </main>
+
+      <div id="loading" class="loading" role="status"><span class="loading-mark">✦</span><span>Abrindo a Mooney's...</span></div>
+      <div id="unsupported" class="unsupported" hidden>Seu navegador não conseguiu abrir a livraria em 3D. Ative a aceleração gráfica e tente novamente.</div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
